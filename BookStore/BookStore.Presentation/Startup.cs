@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,6 +16,12 @@ namespace BookStore.Presentation
 {
     public class Startup
     {
+        private string ConnectionString { get; set; }
+
+        public string GetConnectionString()
+        {
+            return ConnectionString;
+        }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,12 +41,15 @@ namespace BookStore.Presentation
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                ConnectionString = Configuration.GetConnectionString("DevelopmentConnectionString");
             }
             else
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Run(async (context) => { await context.Response.WriteAsync("hello world"); }); 
 
             app.UseHttpsRedirection();
             app.UseMvc();
