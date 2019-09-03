@@ -1,0 +1,8 @@
+﻿using System;
+
+namespace BookStore.BusinessLogic
+{
+    public class Class1
+    {
+    }
+}
