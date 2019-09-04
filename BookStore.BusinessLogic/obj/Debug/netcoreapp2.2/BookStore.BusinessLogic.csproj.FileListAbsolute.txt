@@ -1,0 +1,9 @@
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\bin\Debug\netcoreapp2.2\BookStore.BusinessLogic.deps.json
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\bin\Debug\netcoreapp2.2\BookStore.BusinessLogic.dll
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\bin\Debug\netcoreapp2.2\BookStore.BusinessLogic.pdb
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.csprojAssemblyReference.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.AssemblyInfo.cs
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.dll
+C:\Users\Anuitex\source\repos\BookStore\BookStore.BusinessLogic\obj\Debug\netcoreapp2.2\BookStore.BusinessLogic.pdb

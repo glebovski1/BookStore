@@ -1,0 +1,17 @@
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.deps.json
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.runtimeconfig.json
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.runtimeconfig.dev.json
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.dll
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.pdb
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.csprojAssemblyReference.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.RazorAssemblyInfo.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.RazorAssemblyInfo.cs
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.AssemblyInfoInputs.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.AssemblyInfo.cs
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.RazorTargetAssemblyInfo.cache
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.dll
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.pdb
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.DataAccess.dll
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.DataAccess.pdb
+C:\Users\Anuitex\source\repos\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.csproj.CopyComplete
