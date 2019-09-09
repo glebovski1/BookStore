@@ -10,5 +10,12 @@ namespace BookStore.DataAccess.Entities
 
         public string Name { get; set; }
 
+        public List<AuthorInBook> AuthorInBooks { get; set; }
+
+        public Author()
+        {
+            AuthorInBooks = new List<AuthorInBook>(); 
+        }
+
     }
 }

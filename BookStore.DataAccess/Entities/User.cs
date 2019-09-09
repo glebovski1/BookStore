@@ -6,16 +6,19 @@ using System.Text;
 
 namespace BookStore.DataAccess.Entities
 {
-    public class User  : BaseEntity
+    public class User : IdentityUser<int> 
     {
-        
+        public int Id { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+                
+        public List<UserInRole> UserInRoles;
 
-        public string PasswordHash { get; set; }
-
-        public string Email { get; set; }
+        public User()
+        {
+            UserInRoles = new List<UserInRole>();
+        }
 
     }
 }

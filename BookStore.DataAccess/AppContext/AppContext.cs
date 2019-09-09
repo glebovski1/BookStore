@@ -1,12 +1,11 @@
 ﻿using BookStore.DataAccess.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BookStore.DataAccess.AppContext
 {
-    public class TestAppContext : DbContext
+    public class TestAppContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
 
         public TestAppContext(DbContextOptions<TestAppContext> options) : base(options)
@@ -14,7 +13,7 @@ namespace BookStore.DataAccess.AppContext
 
             Database.EnsureCreated();
         }
-        public DbSet<User> Users { get; set; }
+
 
         public DbSet<Author> Aurhors { get; set; }
 
@@ -28,10 +27,9 @@ namespace BookStore.DataAccess.AppContext
 
         public DbSet<PrintingEdition> PrintingEditions { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
 
         public DbSet<UserInRole> UserInRoles { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -39,15 +37,8 @@ namespace BookStore.DataAccess.AppContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasData(
-            new User[]
-            {
-                new User { Id=1, FirstName="Tom"},
-                new User { Id=2, FirstName="Alice"},
-                new User { Id=3, FirstName="Sam"}
-            });
             base.OnModelCreating(modelBuilder);
         }
-       
+
     }
 }

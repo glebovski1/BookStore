@@ -9,5 +9,13 @@ namespace BookStore.DataAccess.Entities
     {
       public string Name { get; set; }
 
+      public List<UserInRole> UserInRoles;
+
+      public Role()
+      {
+            UserInRoles = new List<UserInRole>();
+      }
+
+
     }
 }

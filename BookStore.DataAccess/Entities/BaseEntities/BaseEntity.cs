@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BookStore.DataAccess.Entities.Interfaces;
+using System;
+
 
 namespace BookStore.DataAccess.Entities.BaseEntities
 {
-    public class BaseEntity
+    public class BaseEntity : IBaseEntity
     {
         public int Id { get; set; }
 
