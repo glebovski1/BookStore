@@ -6,5 +6,12 @@ namespace BookStore.DataAccess.Entities.Interfaces
 {
     public interface IBaseEntity
     {
+
+         int Id { get; set; }
+
+         DateTime CreationData { get; set; }
+
+         bool IsRemoved { get; set; }
+
     }
 }

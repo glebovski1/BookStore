@@ -1,14 +1,13 @@
 ﻿using BookStore.DataAccess.AppContext;
-using BookStore.DataAccess.Entities.BaseEntities;
 using BookStore.DataAccess.Entities.Interfaces;
 using BookStore.DataAccess.Repositories.Interfaces;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories
 {
-    public class BaseRepository<TEntity> : IBaseRepository<BaseEntity> where TEntity : class, IBaseEntity
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IBaseEntity
     {
 
         private readonly TestAppContext dataBase;
@@ -20,40 +19,44 @@ namespace BookStore.DataAccess.Repositories
 
         public async Task Create(TEntity item)
         {
-            await dataBase.AddAsync<TEntity>(item);
+            await dataBase.Set<TEntity>().AddAsync(item);
             await dataBase.SaveChangesAsync();
 
         }
-
+                
         public async Task Delete(int id)
         {
-            IBaseEntity baseEntity = dataBase.FindAsync(id);
-            await dataBase.
+            TEntity entity = await dataBase.Set<TEntity>().FindAsync(id);
+            dataBase.Set<TEntity>().Remove(entity);
+            await dataBase.SaveChangesAsync();
         }
-
+        
         public void Dispose()
         {
-            throw new NotImplementedException();
+            dataBase.Dispose();
+        }
+        
+        public async Task<List<TEntity>> ReadAll()
+        {
+           
+            return await dataBase.Set<TEntity>().ToListAsync();
+            
         }
 
-        public Task<IEnumerable<BaseEntity>> GetItemList()
+        public async Task<TEntity> Read(int id)
         {
-            return dataBase);
+            return await dataBase.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<BaseEntity> Read(int id)
+        public async Task Save()
         {
-            throw new NotImplementedException();
+            await dataBase.SaveChangesAsync(); 
         }
 
-        public Task Save()
+        public async Task Update(TEntity item)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(BaseEntity item)
-        {
-            throw new NotImplementedException();
+            dataBase.Set<TEntity>().Update(item);
+            await dataBase.SaveChangesAsync();
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anuitex\\source\\repos\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj": {}
+    "C:\\Users\\Anuitex\\Documents\\GitHub\\BookStore\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anuitex\\source\\repos\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj": {
+    "C:\\Users\\Anuitex\\Documents\\GitHub\\BookStore\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex\\source\\repos\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex\\Documents\\GitHub\\BookStore\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj",
         "projectName": "BookStore.DataAccess",
-        "projectPath": "C:\\Users\\Anuitex\\source\\repos\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj",
+        "projectPath": "C:\\Users\\Anuitex\\Documents\\GitHub\\BookStore\\BookStore\\BookStore.DataAccess\\BookStore.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Anuitex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex\\source\\repos\\BookStore\\BookStore.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex\\Documents\\GitHub\\BookStore\\BookStore\\BookStore.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

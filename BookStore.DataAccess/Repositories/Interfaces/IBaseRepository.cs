@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories.Interfaces
 {
-    interface IBaseRepository<T> : IDisposable where T : class
+    public interface IBaseRepository<T> : IDisposable where T : class
     {
-        Task<IEnumerable<T>> GetItemList();
+        Task<List<T>> ReadAll();
 
+       
         Task Create(T item);
 
         Task<T> Read(int id);

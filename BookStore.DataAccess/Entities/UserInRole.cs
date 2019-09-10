@@ -1,5 +1,6 @@
 ﻿using BookStore.DataAccess.Entities.BaseEntities;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
