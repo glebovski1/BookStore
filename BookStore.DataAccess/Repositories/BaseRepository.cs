@@ -10,53 +10,52 @@ namespace BookStore.DataAccess.Repositories
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class, IBaseEntity
     {
 
-        private readonly TestAppContext dataBase;
+        protected readonly TestAppContext _dataBase;
+        protected readonly DbSet<TEntity> _dbSet;
 
-        public BaseRepository(TestAppContext _dataBase)
+        public BaseRepository(TestAppContext dataBase)
         {
-            dataBase = _dataBase;
+            _dataBase = dataBase;
+            _dbSet = dataBase.Set<TEntity>();
         }
 
         public async Task Create(TEntity item)
         {
-            await dataBase.Set<TEntity>().AddAsync(item);
-            await dataBase.SaveChangesAsync();
-
+            await _dataBase.AddAsync(item);
+            await _dataBase.SaveChangesAsync();
         }
                 
         public async Task Delete(int id)
         {
-            TEntity entity = await dataBase.Set<TEntity>().FindAsync(id);
-            dataBase.Set<TEntity>().Remove(entity);
-            await dataBase.SaveChangesAsync();
+            TEntity entity = await _dataBase.Set<TEntity>().FindAsync(id);
+            _dataBase.Set<TEntity>().Remove(entity);
+            await _dataBase.SaveChangesAsync();
         }
         
         public void Dispose()
         {
-            dataBase.Dispose();
+            _dataBase.Dispose();
         }
         
         public async Task<List<TEntity>> ReadAll()
         {
-           
-            return await dataBase.Set<TEntity>().ToListAsync();
-            
+            return await _dbSet.ToListAsync();   
         }
 
         public async Task<TEntity> Read(int id)
         {
-            return await dataBase.Set<TEntity>().FindAsync(id);
+            return await _dataBase.Set<TEntity>().FindAsync(id);
         }
 
         public async Task Save()
         {
-            await dataBase.SaveChangesAsync(); 
+            await _dataBase.SaveChangesAsync(); 
         }
 
         public async Task Update(TEntity item)
         {
-            dataBase.Set<TEntity>().Update(item);
-            await dataBase.SaveChangesAsync();
+            _dataBase.Set<TEntity>().Update(item);
+            await _dataBase.SaveChangesAsync();
         }
     }
 }

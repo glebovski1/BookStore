@@ -1,24 +1,21 @@
-﻿using BookStore.DataAccess.Entities.BaseEntities;
+﻿using BookStore.DataAccess.Entities.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BookStore.DataAccess.Entities
 {
-    public class User : IdentityUser<int> 
+    public class User : IdentityUser<int>, IBaseEntity
     {
-        //public int Id { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-                
-        public List<UserInRole> UserInRoles;
+        public DateTime CreationData { get; set; }
+        public bool IsRemoved { get; set; }
 
-        public User()
-        {
-            UserInRoles = new List<UserInRole>();
-        }
+        public UserInRole UserInRole { get;set; }
+
+       
 
     }
 }
