@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\BookStore.DataAccess",
+    "\\BookStore.DataAccess\\Entities",
     "\\BookStore.Presentation"
   ],
+  "SelectedNode": "\\BookStore.DataAccess\\Entities\\Role.cs",
   "PreviewInSolutionExplorer": false
 }
