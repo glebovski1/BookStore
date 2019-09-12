@@ -39,7 +39,7 @@ namespace BookStore.Presentation
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<TestAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnectionString")));
+            services.AddDbContext<TestAppContext>(options => options.UseSqlServer(GetConnectionString()));
 
             services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<TestAppContext>();
 

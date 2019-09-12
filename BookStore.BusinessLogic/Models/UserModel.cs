@@ -7,19 +7,20 @@ using System.Text;
 
 namespace BookStore.BusinessLogic.Models
 {
-    class UserModel  : BaseModel
+    public class UserModel  : BaseModel
     {
         public UserModel()
         {
 
         }
-        public UserModel(User userEnity) : base()
+        public UserModel(User userEntity) : base()
         {
-            this.FirstName = userEnity.FirstName;
-            this.LastName = userEnity.LastName;
-            this.Email = userEnity.Email;
-            this.EmailConfirmed = userEnity.EmailConfirmed;
-            this.UserName = userEnity.UserName;
+            this.FirstName = userEntity.FirstName;
+            this.LastName = userEntity.LastName;
+            this.Email = userEntity.Email;
+            this.EmailConfirmed = userEntity.EmailConfirmed;
+            this.UserName = userEntity.UserName;
+            this.HashPassword = userEntity.PasswordHash;
                         
         }
         public string FirstName { get; set; }
@@ -28,6 +29,7 @@ namespace BookStore.BusinessLogic.Models
         public DateTime CreationData { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
+        public string HashPassword { get; set; }
 
         public User MapToUserEntity()
         {

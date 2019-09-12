@@ -9,6 +9,7 @@ namespace BookStore.DataAccess.Repositories
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
         
+
         public UserRepository(TestAppContext dataBase) : base(dataBase)
         {
             
