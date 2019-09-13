@@ -34,9 +34,5 @@ C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\net
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.pdb
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.Views.dll
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.Presentation.Views.pdb
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.TagHelpers.input.cache
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.TagHelpers.output.cache
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.RazorCoreGenerate.cache
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\Razor\Views\Accaunt\Register.g.cshtml.cs
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.RazorTargetAssemblyInfo.cs
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\obj\Debug\netcoreapp2.2\BookStore.Presentation.Views.pdb
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.BusinessLogic.dll
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\bin\Debug\netcoreapp2.2\BookStore.BusinessLogic.pdb

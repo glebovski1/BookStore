@@ -12,10 +12,11 @@ namespace BookStore.BusinessLogic.Services.Intefaces
         UserModel UserModel { get; set; }
         UserRepository UserRepository { get; set; }
 
-        Task UserRegistration(string userName, string password);
+        Task UserRegistration(string userName, string firstName, string lastName, string emaill, string password);
 
-        
-       
+
+
+
 
 
 

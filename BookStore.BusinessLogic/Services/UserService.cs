@@ -27,13 +27,14 @@ namespace BookStore.BusinessLogic.Services
             _signInManager = signInManager;
         }
 
-        public async Task UserRegistration(string userName, string password)
+        public async Task UserRegistration(string userName, string firstName, string lastName, string emaill, string password)
         {
             UserModel = new UserModel();
             UserModel.UserName = userName;
-            UserModel.HashPassword = password;
-
-            await UserRepository.Create(UserModel.MapToUserEntity());
+            UserModel.FirstName = firstName;
+            UserModel.LastName = lastName;
+            UserModel.Email = emaill;
+            await _userManager.CreateAsync(UserModel.MapToUserEntity(), password);
         }
             
         public async Task<int> GetUserIdByUserName(string userName)

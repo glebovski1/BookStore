@@ -3,6 +3,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStore.BusinessLogic.Services;
+using BookStore.BusinessLogic.Services.Intefaces;
 using BookStore.DataAccess.AppContext;
 using BookStore.DataAccess.Entities;
 using Google;
@@ -42,6 +44,8 @@ namespace BookStore.Presentation
             services.AddDbContext<TestAppContext>(options => options.UseSqlServer(GetConnectionString()));
 
             services.AddIdentity<User, IdentityRole<int>>().AddEntityFrameworkStores<TestAppContext>();
+
+            services.AddTransient<UserService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
