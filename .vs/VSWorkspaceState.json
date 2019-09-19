@@ -5,8 +5,9 @@
     "\\BookStore.BusinessLogic\\Models",
     "\\BookStore.DataAccess",
     "\\BookStore.DataAccess\\Entities",
-    "\\BookStore.Presentation"
+    "\\BookStore.Presentation",
+    "\\BookStore.Presentation\\Controllers"
   ],
-  "SelectedNode": "\\BookStore.BusinessLogic\\Models\\BaseModel.cs",
+  "SelectedNode": "\\BookStore.Presentation\\Controllers\\AcountController.cs",
   "PreviewInSolutionExplorer": false
 }

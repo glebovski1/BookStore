@@ -11,11 +11,11 @@ namespace BookStore.Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AcountController : ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly UserService _userService;
 
-        public AcountController(UserService userService)
+        public AccountController(UserService userService)
         {
             _userService = userService;
         }
@@ -35,15 +35,20 @@ namespace BookStore.Presentation.Controllers
 
         // POST: api/Acount
         [HttpPost]
-        public void RegistrateNewUser([FromBody]UserModel userModel)
+        public async Task<IActionResult> Registratation([FromBody]RegistrationModel registrationModel)
         {
-            //string userName;
-            //string firstName;
-            //string lastName;
-            //string emaillAdress;
-            //string password;
-            //string confirmePassword;
-               
+            if (registrationModel.IsPasswordConfirmed())
+            {
+               await _userService.Registration(registrationModel.UserName, 
+                   registrationModel.FirstName, 
+                   registrationModel.LastName, 
+                   registrationModel.Emaill,
+                   registrationModel.Password);
+
+                return Ok(registrationModel);
+            }
+            return BadRequest();
+            
 
         }
 

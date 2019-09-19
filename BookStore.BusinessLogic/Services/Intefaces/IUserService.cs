@@ -9,10 +9,10 @@ namespace BookStore.BusinessLogic.Services.Intefaces
 {
     public interface IUserService
     {
-        UserModel UserModel { get; set; }
+       
         UserRepository UserRepository { get; set; }
 
-        Task UserRegistration(string userName, string firstName, string lastName, string emaill, string password);
+        Task Registration(string userName, string firstName, string lastName, string emaill, string password);
 
 
 

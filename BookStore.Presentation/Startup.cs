@@ -1,13 +1,7 @@
-﻿using System;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using BookStore.BusinessLogic.Services;
-using BookStore.BusinessLogic.Services.Intefaces;
 using BookStore.DataAccess.AppContext;
 using BookStore.DataAccess.Entities;
-using Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -68,9 +62,7 @@ namespace BookStore.Presentation
             app.UseHttpsRedirection();
             app.UseAuthentication(); 
             app.UseStaticFiles();
-            app.Run(async (context) => { await context.Response.WriteAsync("hello world"); }); 
-
-            
+            app.Run(async (context) => { await context.Response.WriteAsync("hello world"); });
             app.UseMvc();
         }
     }

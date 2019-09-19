@@ -13,7 +13,6 @@ namespace BookStore.DataAccess.Entities
         [ForeignKey("Role")]
         public int RoleId { get; set; }
 
-        
         public Role Role { get; set; }
 
         [ForeignKey("User")]

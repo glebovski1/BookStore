@@ -14,7 +14,7 @@ namespace BookStore.BusinessLogic.Services
 {
     public class UserService : IUserService
     {
-        public UserModel UserModel { get; set; }
+        
         public UserRepository UserRepository { get; set; }
 
         private readonly UserManager<User> _userManager;
@@ -27,16 +27,17 @@ namespace BookStore.BusinessLogic.Services
             _signInManager = signInManager;
         }
 
-        public async Task UserRegistration(string userName, string firstName, string lastName, string emaill, string password)
+        public async Task Registration(string userName, string firstName, string lastName, string emaill, string password)
         {
-            UserModel = new UserModel();
+            UserModel UserModel = new UserModel();
             UserModel.UserName = userName;
             UserModel.FirstName = firstName;
             UserModel.LastName = lastName;
             UserModel.Email = emaill;
             await _userManager.CreateAsync(UserModel.MapToUserEntity(), password);
         }
-            
+        
+
         public async Task<int> GetUserIdByUserName(string userName)
         {
             List<User> userEntityList = await UserRepository.ReadAll();
@@ -58,6 +59,8 @@ namespace BookStore.BusinessLogic.Services
             return userModel;
         }
 
+       
+       
        
     }
 }
