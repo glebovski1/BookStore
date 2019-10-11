@@ -21,7 +21,7 @@ namespace BookStore.BusinessLogic.Models
             this.EmailConfirmed = userEntity.EmailConfirmed;
             this.UserName = userEntity.UserName;
             this.HashPassword = userEntity.PasswordHash;
-                        
+                                  
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -30,11 +30,11 @@ namespace BookStore.BusinessLogic.Models
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string HashPassword { get; set; }
-
+        
+        
         public User MapToUserEntity()
         {
             User userEntiy = new User();
-            userEntiy.CreationData = this.CreationData;
             userEntiy.Email = this.Email;
             userEntiy.EmailConfirmed = this.EmailConfirmed;
             userEntiy.FirstName = this.FirstName;
@@ -42,7 +42,7 @@ namespace BookStore.BusinessLogic.Models
             userEntiy.Id = this.Id;
             userEntiy.IsRemoved = this.IsRemoved;
             userEntiy.UserName = this.UserName;
-
+            
             return userEntiy;
         }
     }

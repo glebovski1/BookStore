@@ -1,7 +1,9 @@
 ﻿using BookStore.DataAccess.Entities;
+using BookStore.DataAccess.Entities.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace BookStore.DataAccess.AppContext
 {
@@ -26,7 +28,6 @@ namespace BookStore.DataAccess.AppContext
         public DbSet<Payment> Payments { get; set; }
 
         public DbSet<PrintingEdition> PrintingEditions { get; set; }
-
 
         public DbSet<UserInRole> UserInRoles { get; set; }
 

@@ -10,7 +10,7 @@ namespace BookStore.BusinessLogic.Models
         public BaseModel(BaseEntity baseEntity)
         {
             this.Id = baseEntity.Id;
-            this.DataCreated = baseEntity.CreationData;
+            this.DataCreated = baseEntity.DateTimeUtcNow;
             this.IsRemoved = baseEntity.IsRemoved;
 
         }
@@ -24,7 +24,6 @@ namespace BookStore.BusinessLogic.Models
         {
             BaseEntity baseEntity = new BaseEntity();
             baseEntity.Id = this.Id;
-            baseEntity.CreationData = this.DataCreated;
             baseEntity.IsRemoved = this.IsRemoved;
             return baseEntity;
         }

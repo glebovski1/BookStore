@@ -5,10 +5,8 @@ using System.Text;
 
 namespace BookStore.DataAccess.Repositories.Interfaces
 {
-    interface IPaymentRepository : IBaseRepository<Payment>
+    public interface IPaymentRepository : IBaseRepository<Payment>
     {
-
-
 
     }
 }

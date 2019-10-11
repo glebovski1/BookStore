@@ -18,7 +18,7 @@ namespace BookStore.DataAccess.Migrations
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
-                    CreationData = table.Column<DateTime>(nullable: true),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: true),
                     IsRemoved = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
@@ -48,8 +48,8 @@ namespace BookStore.DataAccess.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    CreationData = table.Column<DateTime>(nullable: false),
-                    IsRemoved = table.Column<bool>(nullable: false)
+                    IsRemoved = table.Column<bool>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +62,7 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -77,7 +77,7 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     TransactionId = table.Column<int>(nullable: false)
                 },
@@ -92,7 +92,7 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -218,7 +218,7 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     RoleId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
@@ -246,11 +246,10 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     Decsription = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false),
-                    Date = table.Column<DateTime>(nullable: false),
                     PaymentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -276,11 +275,10 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     AuthorId = table.Column<int>(nullable: false),
-                    PrintingEditionId = table.Column<int>(nullable: false),
-                    Data = table.Column<DateTime>(nullable: false)
+                    PrintingEditionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -305,23 +303,16 @@ namespace BookStore.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CreationData = table.Column<DateTime>(nullable: false),
+                    DateTimeUtcNow = table.Column<DateTime>(nullable: false),
                     IsRemoved = table.Column<bool>(nullable: false),
                     Amount = table.Column<int>(nullable: false),
                     Currency = table.Column<string>(nullable: true),
                     PrintingEditionId = table.Column<int>(nullable: false),
-                    Count = table.Column<int>(nullable: false),
-                    OrderId = table.Column<int>(nullable: true)
+                    Count = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderItems_PrintingEditions_PrintingEditionId",
                         column: x => x.PrintingEditionId,
@@ -380,11 +371,6 @@ namespace BookStore.DataAccess.Migrations
                 column: "PrintingEditionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
-                table: "OrderItems",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_PrintingEditionId",
                 table: "OrderItems",
                 column: "PrintingEditionId");
@@ -435,22 +421,22 @@ namespace BookStore.DataAccess.Migrations
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "UserInRoles");
 
             migrationBuilder.DropTable(
                 name: "Aurhors");
 
             migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
                 name: "PrintingEditions");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "Payments");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

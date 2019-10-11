@@ -14,12 +14,8 @@ namespace BookStore.DataAccess.Repositories
 
         RoleIRepository(TestAppContext dataBase) : base(dataBase)
         {
-
         }
 
-        public async Task<Role> GetRoleWithUserInRoles(int id)
-        {
-            return await _dbSet.Include(role=>role.UserInRoles).FirstOrDefaultAsync(role => role.Id == id);
-        }
+       
     }
 }

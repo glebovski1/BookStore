@@ -2,6 +2,7 @@
 using BookStore.DataAccess.Entities;
 using BookStore.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories
@@ -13,9 +14,12 @@ namespace BookStore.DataAccess.Repositories
 
         }
 
-        public async Task<Author> GetAuthorWithAuthorInRoles(int id)
+        public async Task<Author> FindByName(string name)
         {
-            return await _dbSet.Include(author => author.AuthorInBooks).FirstOrDefaultAsync(author => author.Id == id);
+            Author _author = await _dbSet.FirstOrDefaultAsync(author => author.Name == name);
+
+            return _author;
         }
+       
     }
 }

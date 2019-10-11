@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories.Interfaces
 {
-    interface IAuthorRepository : IBaseRepository<Author>
+    public interface IAuthorRepository : IBaseRepository<Author>
     {
-        Task<Author> GetAuthorWithAuthorInRoles(int id);
+        Task<Author> FindByName(string name);
 
     }
 }

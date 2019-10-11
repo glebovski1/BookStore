@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories.Interfaces
 {
-    interface IPrintingEditionRepository : IBaseRepository<PrintingEdition>
+    public interface IPrintingEditionRepository : IBaseRepository<Entities.PrintingEdition>
     {
-        Task<PrintingEdition> GetPrintingEditionWithAuthorInBooks(int id);
+       
     }
 }

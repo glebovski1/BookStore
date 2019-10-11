@@ -9,7 +9,7 @@ namespace BookStore.DataAccess.Entities.Interfaces
 
          int Id { get; set; }
 
-         DateTime CreationData { get; set; }
+         DateTime DateTimeUtcNow { get; set; }
 
          bool IsRemoved { get; set; }
 

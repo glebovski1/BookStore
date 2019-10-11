@@ -9,17 +9,12 @@ namespace BookStore.DataAccess.Entities
 {
     public class Role : IdentityRole<int>, IBaseEntity
     {
-      
-
-      public List<UserInRole> UserInRoles;
-
-      public Role()
-      {
-            UserInRoles = new List<UserInRole>();
-      }
-
-        public DateTime CreationData { get; set; }
+        public DateTime DateTimeUtcNow { get; set; }
         public bool IsRemoved { get; set; }
-        int IBaseEntity.Id { get; set; }
+        
+        public Role()
+        {
+            DateTimeUtcNow = DateTime.UtcNow;
+        }
     }
 }

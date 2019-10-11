@@ -9,8 +9,12 @@ namespace BookStore.DataAccess.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime CreationData { get; set; }
         public bool IsRemoved { get; set; }
         public UserInRole UserInRole { get;set; }
+        public DateTime DateTimeUtcNow { get; set; }
+        public User()
+        {
+            DateTimeUtcNow = DateTime.UtcNow;
+        }
     }
 }

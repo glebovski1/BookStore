@@ -8,8 +8,13 @@ namespace BookStore.DataAccess.Entities.BaseEntities
     {
         public int Id { get; set; }
 
-        public DateTime CreationData { get; set; }
+        public DateTime DateTimeUtcNow { get; set; }
 
         public bool IsRemoved { get; set; }
+
+        public BaseEntity()
+        {
+            DateTimeUtcNow = DateTime.UtcNow;
+        }
     }
 }

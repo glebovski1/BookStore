@@ -7,9 +7,8 @@ using System.Text;
 
 namespace BookStore.DataAccess.Repositories
 {
-    class PaymentRepository : BaseRepository<Payment>, IPaymentRepository
+    public class PaymentRepository : BaseRepository<Payment>, IPaymentRepository
     {
-
         public PaymentRepository(TestAppContext dataBase) : base(dataBase)
         {
 

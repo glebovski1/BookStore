@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories.Interfaces
 {
-    interface IOrderRepository : IBaseRepository<Order>
+    public interface IOrderRepository : IBaseRepository<Order>
     {
 
-        Task<Order> GetOrderWithOrderItems(int id);
+        //Task<Order> GetOrderWithOrderItems(int id);
 
     }
 }

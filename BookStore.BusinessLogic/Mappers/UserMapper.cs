@@ -6,10 +6,10 @@ using System.Text;
 
 namespace BookStore.BusinessLogic.Mappers
 {
-    public static class Mapper
+    public static class UserMapper
     {
         
-        public static UserModel MappToModel(User userEntity)
+        public static UserModel UserMappToModel(User userEntity)
         {
             UserModel userModel = new UserModel();
             userModel.FirstName = userEntity.FirstName;
@@ -18,13 +18,13 @@ namespace BookStore.BusinessLogic.Mappers
             userModel.EmailConfirmed = userEntity.EmailConfirmed;
             userModel.UserName = userEntity.UserName;
             userModel.HashPassword = userEntity.PasswordHash;
+
             return userModel;
         }
 
-        public static User MappToEntity(UserModel userModel)
+        public static User UserMappToEntity(UserModel userModel)
         {
             User userEntiy = new User();
-            userEntiy.CreationData = userModel.CreationData;
             userEntiy.Email = userModel.Email;
             userEntiy.EmailConfirmed = userModel.EmailConfirmed;
             userEntiy.FirstName = userModel.FirstName;

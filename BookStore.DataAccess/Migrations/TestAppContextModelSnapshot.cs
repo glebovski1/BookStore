@@ -25,7 +25,7 @@ namespace BookStore.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationData");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -44,9 +44,7 @@ namespace BookStore.DataAccess.Migrations
 
                     b.Property<int>("AuthorId");
 
-                    b.Property<DateTime>("CreationData");
-
-                    b.Property<DateTime>("Data");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -67,9 +65,7 @@ namespace BookStore.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationData");
-
-                    b.Property<DateTime>("Date");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<string>("Decsription");
 
@@ -98,9 +94,9 @@ namespace BookStore.DataAccess.Migrations
 
                     b.Property<int>("Count");
 
-                    b.Property<DateTime>("CreationData");
-
                     b.Property<string>("Currency");
+
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -123,7 +119,7 @@ namespace BookStore.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationData");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -140,9 +136,9 @@ namespace BookStore.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationData");
-
                     b.Property<string>("Currency");
+
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<string>("Description");
 
@@ -172,7 +168,7 @@ namespace BookStore.DataAccess.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<DateTime>("CreationData");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -227,7 +223,7 @@ namespace BookStore.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreationData");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -362,7 +358,7 @@ namespace BookStore.DataAccess.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole<int>");
 
-                    b.Property<DateTime>("CreationData");
+                    b.Property<DateTime>("DateTimeUtcNow");
 
                     b.Property<bool>("IsRemoved");
 
@@ -372,12 +368,12 @@ namespace BookStore.DataAccess.Migrations
             modelBuilder.Entity("BookStore.DataAccess.Entities.AuthorInBook", b =>
                 {
                     b.HasOne("BookStore.DataAccess.Entities.Author", "Author")
-                        .WithMany("AuthorInBooks")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookStore.DataAccess.Entities.PrintingEdition", "PrintingEdition")
-                        .WithMany("AuthorInBooks")
+                        .WithMany()
                         .HasForeignKey("PrintingEditionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -47,6 +47,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.3.1.6, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -56,6 +64,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [
@@ -105,6 +117,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[2.3.1.6, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[2.2.6, )"
@@ -114,6 +134,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [

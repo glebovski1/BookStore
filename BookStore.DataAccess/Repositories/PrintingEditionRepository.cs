@@ -9,16 +9,13 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories
 {
-    class PrintingEditionRepository : BaseRepository<PrintingEdition>, IPrintingEditionRepository
+    public class PrintingEditionRepository : BaseRepository<Entities.PrintingEdition>, IPrintingEditionRepository
     {
 
         public PrintingEditionRepository(TestAppContext dataBase) : base(dataBase)
         {
 
         }
-        public async Task<PrintingEdition> GetPrintingEditionWithAuthorInBooks(int id)
-        {
-            return await _dbSet.Include(printingEdition => printingEdition.AuthorInBooks).FirstOrDefaultAsync(printingEdition => printingEdition.Id == id);
-        }
+      
     }
 }

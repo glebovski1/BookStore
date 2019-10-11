@@ -6,19 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Auth0.ManagementApi" Version="6.5.3" />
     <PackageReference Include="Google.Apis.Core" Version="1.40.3" />
+    <PackageReference Include="MailKit" Version="2.3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BookStore.BusinessLogic\BookStore.BusinessLogic.csproj" />
-    <ProjectReference Include="..\BookStore.DataAccess\BookStore.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
