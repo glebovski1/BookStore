@@ -68,7 +68,7 @@ namespace BookStore.Presentation.Controllers
                                                 
             StringBuilder stringBuilder = new StringBuilder();
 
-            stringBuilder.Append($"{Request.Scheme}://{Request.Host}/account/confirmation/");
+            stringBuilder.Append($"{Request.Scheme}://{Request.Host}/api/account/confirmation/");
             stringBuilder.Append($"?email={HttpUtility.UrlEncode(registrationModel.Email)}");
             stringBuilder.Append($"&confirmToken={HttpUtility.UrlEncode(confirmToken)}");
             
@@ -137,6 +137,7 @@ namespace BookStore.Presentation.Controllers
                 TokensResponseModel tokensResponseModel = new TokensResponseModel();
                 tokensResponseModel.AccessToken = jwtToken;
                 tokensResponseModel.RefreshToken = refreshJwtToken;
+                tokensResponseModel.Role = role;
                 await _userManager.SetAuthenticationTokenAsync(user, String.Empty, "RefreshToken", refreshJwtToken);
                 return tokensResponseModel;
                     

@@ -89,6 +89,8 @@ namespace BookStore.Presentation
 
             services.AddTransient<RoleManager<Role>>();
 
+            services.AddCors();
+
         }
 
 
@@ -108,6 +110,7 @@ namespace BookStore.Presentation
                 app.UseHsts();
             }
 
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseAuthentication();
             MyIdentityDataInitializer.SeedRoles(roleManager);
@@ -115,12 +118,20 @@ namespace BookStore.Presentation
             app.UseStaticFiles();
             //app.Run(async (context) => { await context.Response.WriteAsync("hello world"); });
             //app.UseMvc();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}");
             });
+            
+            //app.UseCors(builder =>
+            //{
+            //    builder.WithOrigins("http://localhost:4200")
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader();
+            //});
 
 
         }

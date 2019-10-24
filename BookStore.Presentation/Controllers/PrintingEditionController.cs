@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using BookStore.BusinessLogic.Services.Intefaces;
-using BookStore.BusinessLogic.Models;
+﻿using BookStore.BusinessLogic.Models;
 using BookStore.BusinessLogic.Services;
+using BookStore.BusinessLogic.Services.Intefaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BookStore.Presentation.Controllers
 {
@@ -23,7 +20,7 @@ namespace BookStore.Presentation.Controllers
         IPrintingEditionService _printingEditionService;
 
         [HttpPost("Post")]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task AddPrintingEdition([FromBody]PrintingEditionModel printingEditionModel)
         {
             await _printingEditionService.AddPrintingEdition(printingEditionModel);
@@ -33,16 +30,19 @@ namespace BookStore.Presentation.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<PrintingEditionModel> GetPrintingEdition([FromBody]int id)
         {
-            return await _printingEditionService.GetPrintingEditionModel(id);
+            PrintingEditionModel response = await _printingEditionService.GetPrintingEditionModel(id);
+            return response;
         }
 
         [HttpGet("GetAll")]
+        [Authorize(Roles ="User, Admin")]
         public async Task<List<PrintingEditionModel>> GetAllPrintingEdition()
         {
-            return await _printingEditionService.GetPrintingEditionModels();
+            List<PrintingEditionModel> response = await _printingEditionService.GetPrintingEditionModels();
+            return response;
         }
         [HttpPost("Delete")]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
 
         public async Task Delete([FromBody]int id)
         {

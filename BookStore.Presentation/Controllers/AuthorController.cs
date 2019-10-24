@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BookStore.BusinessLogic.Models;
-using BookStore.BusinessLogic.Services;
+﻿using BookStore.BusinessLogic.Models;
 using BookStore.BusinessLogic.Services.Intefaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Presentation.Controllers
