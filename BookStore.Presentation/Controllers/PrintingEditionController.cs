@@ -34,11 +34,11 @@ namespace BookStore.Presentation.Controllers
             return response;
         }
 
-        [HttpGet("GetAll")]
+        [HttpPost("GetAll")]
         [Authorize(Roles ="User, Admin")]
-        public async Task<List<PrintingEditionModel>> GetAllPrintingEdition()
+        public async Task<List<PrintingEditionModel>> GetAllPrintingEdition([FromBody]int page)
         {
-            List<PrintingEditionModel> response = await _printingEditionService.GetPrintingEditionModels();
+            List<PrintingEditionModel> response = await _printingEditionService.GetPrintingEditionModels(page);
             return response;
         }
         [HttpPost("Delete")]

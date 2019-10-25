@@ -13,11 +13,22 @@
             <td class="text-white" scope="row">{{ i + 1 }}</td>
             <td class="text-white">{{model.name}}</td>
             <td type="button" class="btn btn-dark" (click)="onSelect(model)">Details</td>
-            <td *ngIf="isAdminCondition" type="button" class="btn btn-dark">Deleat</td>
+            <td *ngIf="isAdminCondition" type="button" class="btn btn-dark" (click)="onDelete(model)">Deleat</td>
             <td *ngIf="isAdminCondition" type="button" class="btn btn-dark">Udpate</td>
           </tr>
         </tbody>
       </table>
+      <ul class="pagination">
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPreviousPage()">Previous</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(1)">1</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber)">{{pageNumber}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber+1)">{{pageNumber+1}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber+2)">{{pageNumber+2}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber+3)">{{pageNumber+3}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber+4)">{{pageNumber+4}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber+5)">{{pageNumber+5}}</a></li>
+          <li class="page-item text-white"><a class="btn btn-dark" (click)="onNextPage()">Next</a></li>
+        </ul>
       <div *ngIf="isAdminCondition" type="button" class="btn btn-dark btn-block" (click)="onAddPrintingEdition()">Add
         new Printing Edition</div>
     </div>
@@ -47,7 +58,7 @@
             <input type="text" class="form-control" formControlName="description" id="description">
           </div>
           <div class="form-group">
-            <label class="text-body" for="price">Price:</label>
+            <label class="decimal-body" for="price">Price:</label>
             <input type="number" class="form-control" formControlName="price" id="price">
           </div>
           <div class="form-group">
@@ -60,10 +71,10 @@
           </div>
           <div class="form-group">
             <label class="text-body" type="authors">Authors::</label>
-            <input type="authors" class="form-control" formControlName="type" id="type">
+            <input type="text" class="form-control" formControlName="authors" id="authors">
           </div>
           <div class="form-group">
-          <button tclass="btn btn-dark">Add</button>
+            <button tclass="btn btn-dark">Add</button>
           </div>
         </form>
       </div>

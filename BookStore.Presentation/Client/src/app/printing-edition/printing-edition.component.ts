@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrintingEditionService, AuthenticationService } from '../service';
-import { PrintingEditionModel } from '../models';
+import { PrintingEditionModel, AuthorModel } from '../models';
 import { error } from 'util';
 import { getLocaleNumberFormat } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -22,6 +22,7 @@ export class PrintingEditionComponent implements OnInit {
   isAdminCondition: boolean;
   sekcondComumnType: string;
   AddNewPrintingEditionForm: FormGroup;
+  pageNumber: number;
   printingEditionModel: PrintingEditionModel;
   constructor(private printingEditionService: PrintingEditionService,
               private authService: AuthenticationService,
@@ -29,10 +30,20 @@ export class PrintingEditionComponent implements OnInit {
     this.models = [];
   }
   selectedModel: PrintingEditionModel;
-  onSelect(model: PrintingEditionModel): void {
+  ngOnInit() {
+    this.currentRole = this.authService.getRole();
+    this.isAdminCondition = (this.currentRole === 'Admin');
+    this.pageNumber = 1;
+    this.getAll();
+  }
+   onSelect(model: PrintingEditionModel) {
     this.selectedModel = model;
     this.sekcondComumnType = 'DetailsPrintingEdition';
   }
+  onDelete(model: PrintingEditionModel) {
+     this.printingEditionService.deletePrintingEdition(model.id);
+     this.getAll();
+    }
   onAddPrintingEdition() {
     this.sekcondComumnType = 'AddPrintingEdition';
     this.AddNewPrintingEditionForm = this.formBuilder.group(
@@ -48,32 +59,45 @@ export class PrintingEditionComponent implements OnInit {
   }
   get f() { return this.AddNewPrintingEditionForm.controls; }
 
+  onPreviousPage() {
+    this.pageNumber = this.pageNumber - 1;
+    this.getAll();
+  }
+  onNextPage() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAll();
+  }
+  onPageNumber(page: number) {
+    this.pageNumber = page;
+    this.getAll();
+  }
+
+
   onSubmit() {
     this.printingEditionModel = new PrintingEditionModel();
-    this.printingEditionModel.Name = this.f.name.value;
-    this.printingEditionModel.Description = this.f.description.value;
-    this.printingEditionModel.Currency = this.f.currency.value;
-    this.printingEditionModel.Type = this.f.type.value;
-    this.printingEditionModel.Authors = this.f.authors.value;
-    this.printingEditionModel.Price = this.f.price.value;
-    this.printingEditionModel.Status = 'Available';
+    this.printingEditionModel.name = this.f.name.value;
+    this.printingEditionModel.description = this.f.description.value;
+    this.printingEditionModel.currency = this.f.currency.value;
+    this.printingEditionModel.type = this.f.type.value;
+    const AuthorsNamesArray = this.f.authors.value.split(',', 100);
+    AuthorsNamesArray.forEach(element => {
+      this.printingEditionModel.authors.push(new AuthorModel(element));
+    });
+    this.printingEditionModel.price = this.f.price.value;
+    this.printingEditionModel.status = 'Available';
     this.printingEditionService.addPrintingEdition(this.printingEditionModel);
-  }
-  ngOnInit() {
     this.getAll();
-    this.currentRole = this.authService.getRole();
-    this.isAdminCondition = (this.currentRole === 'Admin');
   }
+
   getAll() {
-    this.printingEditionService.getAll().subscribe(
+    this.printingEditionService.getAll(this.pageNumber).subscribe(
       (data: PrintingEditionModel[]) => {
         this.models = data;
-
       },
       (error) => {
         this.errorText = error.Massage;
         this.authService.refreshToken();
       });
-  }
+    }
 
 }

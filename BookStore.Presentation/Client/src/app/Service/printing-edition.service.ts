@@ -13,15 +13,19 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 export class PrintingEditionService {
   token: string;
     constructor(private http: HttpClient, private authService: AuthenticationService) { }
-  public getAll(): Observable<PrintingEditionModel[]> {
+  public getAll(page: number): Observable<PrintingEditionModel[]> {
     const httpOptions = this.authService.getHttpOptionsWithAccessToken();
-    return this.http.get<PrintingEditionModel[]>(`http://localhost:52192/api/printingedition/getall`, httpOptions);
+    return this.http.post<PrintingEditionModel[]>(`http://localhost:52192/api/printingedition/getall`, page,  httpOptions);
     
   }
   public addPrintingEdition(printingEdition: PrintingEditionModel) {
     const httpOptions = this.authService.getHttpOptionsWithAccessToken();
     this.http.post<PrintingEditionModel>(`http://localhost:52192/api/printingedition/post`, printingEdition,
     httpOptions).subscribe();
-    
+    }
+    public deletePrintingEdition(id: number){
+      const httpOptions = this.authService.getHttpOptionsWithAccessToken();
+this.http.post<any>(`http://localhost:52192/api/printingedition/delete`, id, httpOptions).subscribe();
+
     }
 }

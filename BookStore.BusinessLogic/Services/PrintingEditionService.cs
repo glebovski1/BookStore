@@ -66,8 +66,10 @@ namespace BookStore.BusinessLogic.Services
 
 
 
-        public async Task<List<PrintingEditionModel>> GetPrintingEditionModels()
+        public async Task<List<PrintingEditionModel>> GetPrintingEditionModels(int page)
         {
+           
+
             List<PrintingEdition> printingEditionEntities = await _printingEditionRepository.ReadAll();
 
             List<int> printionEditionIdList = printingEditionEntities.Select(item => item.Id).ToList();
@@ -81,7 +83,12 @@ namespace BookStore.BusinessLogic.Services
                 : null
             }).ToList();
 
-            return result;
+            
+            PageViewModel pageViewModel = new PageViewModel(
+                result.Count(), page, 10
+                );
+
+            return result.Skip((page-1)* 10).Take(10).ToList();
         }
 
         public async Task<PrintingEditionModel> GetPrintingEditionModel(int id)
