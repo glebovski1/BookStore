@@ -2,12 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\BookStore.BusinessLogic",
-    "\\BookStore.BusinessLogic\\Models",
+    "\\BookStore.BusinessLogic\\Services",
     "\\BookStore.DataAccess",
     "\\BookStore.DataAccess\\Entities",
     "\\BookStore.Presentation",
     "\\BookStore.Presentation\\Controllers"
   ],
-  "SelectedNode": "\\BookStore.Presentation\\Controllers\\AcountController.cs",
+  "SelectedNode": "\\BookStore.BusinessLogic\\Services\\UserService.cs",
   "PreviewInSolutionExplorer": false
 }

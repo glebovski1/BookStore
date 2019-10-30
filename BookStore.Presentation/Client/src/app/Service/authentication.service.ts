@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenResponseModel, RefreshTokenModel } from '../models';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
@@ -10,7 +11,7 @@ export class AuthenticationService {
     tokensRequest: TokenResponseModel;
     constructor(private http: HttpClient) {}
     login(email: string, password: string) {
-     this.http.post<TokenResponseModel>(`http://localhost:52192/api/account/loggin`, {email, password}).subscribe(
+     this.http.post<TokenResponseModel>(`${environment.apiUrl}account/loggin`, {email, password}).subscribe(
         (data: TokenResponseModel) => {
           localStorage.setItem('role', data.role);
           localStorage.setItem('accessToken', data.accessToken);
@@ -49,7 +50,7 @@ export class AuthenticationService {
       this.refreshRequest.LoginProvider = '';
       this.refreshRequest.RefreshTokenFromClient = this.getRefrershToken();
       this.refreshRequest.email = localStorage.getItem('email');
-      this.http.post<TokenResponseModel>(`http://localhost:52192/api/account/jwtrefresh`, this.refreshRequest).subscribe(
+      this.http.post<TokenResponseModel>(`${environment.apiUrl}account/jwtrefresh`, this.refreshRequest).subscribe(
         (data: TokenResponseModel) =>{
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('refreshToken', data.refreshToken);

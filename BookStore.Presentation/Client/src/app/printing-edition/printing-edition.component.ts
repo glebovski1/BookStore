@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PrintingEditionService, AuthenticationService } from '../service';
-import { PrintingEditionModel, AuthorModel } from '../models';
+import { PrintingEditionService, AuthenticationService, PurchaseService } from '../service';
+import { PrintingEditionModel, AuthorModel, FilterModel, PurchaseModel, PurchaseCardModel } from '../models';
 import { error } from 'util';
 import { getLocaleNumberFormat } from '@angular/common';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { HttpBackend } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
@@ -22,28 +22,34 @@ export class PrintingEditionComponent implements OnInit {
   isAdminCondition: boolean;
   sekcondComumnType: string;
   AddNewPrintingEditionForm: FormGroup;
+  FilterPrintingEdition: FormGroup;
   pageNumber: number;
   printingEditionModel: PrintingEditionModel;
+  filteModel: FilterModel;
+  purchase: PurchaseModel;
+  purchaseCard: PurchaseCardModel;
+  selectedModel: PrintingEditionModel;
   constructor(private printingEditionService: PrintingEditionService,
               private authService: AuthenticationService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private purchaseService: PurchaseService) {
     this.models = [];
   }
-  selectedModel: PrintingEditionModel;
+  
   ngOnInit() {
     this.currentRole = this.authService.getRole();
     this.isAdminCondition = (this.currentRole === 'Admin');
     this.pageNumber = 1;
     this.getAll();
   }
-   onSelect(model: PrintingEditionModel) {
+  onSelect(model: PrintingEditionModel) {
     this.selectedModel = model;
     this.sekcondComumnType = 'DetailsPrintingEdition';
   }
   onDelete(model: PrintingEditionModel) {
-     this.printingEditionService.deletePrintingEdition(model.id);
-     this.getAll();
-    }
+    this.printingEditionService.deletePrintingEdition(model.id).then(() => {this.getAll(); });
+    this.getAll();
+  }
   onAddPrintingEdition() {
     this.sekcondComumnType = 'AddPrintingEdition';
     this.AddNewPrintingEditionForm = this.formBuilder.group(
@@ -59,6 +65,26 @@ export class PrintingEditionComponent implements OnInit {
   }
   get f() { return this.AddNewPrintingEditionForm.controls; }
 
+  onAddToCard() {
+    this.purchaseCard = this.purchaseService.GetPurchaseCardFromLocalStorage();
+    // tslint:disable-next-line: triple-equals
+    if (this.purchaseCard == undefined) {
+      this.purchaseCard = new PurchaseCardModel();
+    }
+    this.purchase = new PurchaseModel();
+    this.purchase.id = this.selectedModel.id;
+    this.purchase.name = this.selectedModel.name;
+    this.purchase.price = this.selectedModel.price;
+    this.purchase.currency = this.selectedModel.currency;
+    this.purchase.amount = 1;
+    if (this.purchaseCard.PurchaseModels == null) {
+      this.purchaseCard.PurchaseModels = new Array<PurchaseModel>();
+    }
+    this.purchaseCard.PurchaseModels.push(this.purchase);
+    this.purchaseService.AddPurchaseCardToLocalStorage(this.purchaseCard);
+    
+  }
+
   onPreviousPage() {
     this.pageNumber = this.pageNumber - 1;
     this.getAll();
@@ -71,7 +97,40 @@ export class PrintingEditionComponent implements OnInit {
     this.pageNumber = page;
     this.getAll();
   }
+  onRefresh() {
+    this.getAll();
+  }
+  onFilter() {
+    this.sekcondComumnType = 'filter';
+    this.FilterPrintingEdition = this.formBuilder.group(
+      {
+        name: '',
+        type: '',
+        uperPrice: '0',
+        lowerPrice: '0',
+        author: ''
+      }
+    );
+  }
+  get ffilter() { return this.FilterPrintingEdition.controls; }
 
+  onFilterPrintingEdition() {
+    this.filteModel = new FilterModel();
+    this.filteModel.name = this.ffilter.name.value;
+    this.filteModel.author = this.ffilter.author.value;
+    this.filteModel.type = this.ffilter.type.value;
+    this.filteModel.uperprice = this.ffilter.uperPrice.value;
+    this.filteModel.lowerprice = this.ffilter.lowerPrice.value;
+    this.filteModel.pagenumber = this.pageNumber;
+    this.printingEditionService.getAllFiltred(this.filteModel).then((data: any) => {
+      this.models = data;
+    },
+    (error) => {
+      this.errorText = error.Massage;
+      this.authService.refreshToken();
+    })
+    .then(() => { });
+  }
 
   onSubmit() {
     this.printingEditionModel = new PrintingEditionModel();
@@ -80,13 +139,14 @@ export class PrintingEditionComponent implements OnInit {
     this.printingEditionModel.currency = this.f.currency.value;
     this.printingEditionModel.type = this.f.type.value;
     const AuthorsNamesArray = this.f.authors.value.split(',', 100);
-    AuthorsNamesArray.forEach(element => {
+    this.printingEditionModel.authors = Array<AuthorModel>();
+    AuthorsNamesArray.forEach((element: string) => {
       this.printingEditionModel.authors.push(new AuthorModel(element));
     });
     this.printingEditionModel.price = this.f.price.value;
     this.printingEditionModel.status = 'Available';
-    this.printingEditionService.addPrintingEdition(this.printingEditionModel);
-    this.getAll();
+    this.printingEditionService.addPrintingEdition(this.printingEditionModel)
+      .then(() => { this.getAll(); });
   }
 
   getAll() {
@@ -98,6 +158,5 @@ export class PrintingEditionComponent implements OnInit {
         this.errorText = error.Massage;
         this.authService.refreshToken();
       });
-    }
-
+  }
 }

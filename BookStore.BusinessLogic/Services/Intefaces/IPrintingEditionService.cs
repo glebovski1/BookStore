@@ -20,5 +20,7 @@ namespace BookStore.BusinessLogic.Services.Intefaces
 
         Task<List<PrintingEditionModel>> GetPrintingEditionModels(int page);
 
+        Task<List<PrintingEditionModel>> GetPrintingEditionModelsFiltred(FilterModel filterModel);
+
     }
 }

@@ -41,6 +41,14 @@ namespace BookStore.Presentation.Controllers
             List<PrintingEditionModel> response = await _printingEditionService.GetPrintingEditionModels(page);
             return response;
         }
+
+        [HttpPost("GetAllFiltred")]
+        [Authorize(Roles="User, Admin")]
+        public async Task<List<PrintingEditionModel>> GetAllPrintingFilterd([FromBody]FilterModel filterModel)
+        {
+            List<PrintingEditionModel> response = await _printingEditionService.GetPrintingEditionModelsFiltred(filterModel);
+            return response;
+        }
         [HttpPost("Delete")]
         [Authorize(Roles = "Admin")]
 

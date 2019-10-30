@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PrintingEditionModel } from '../models';
+import { PrintingEditionModel, FilterModel } from '../models';
 import { Observable } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/service/authentication.service';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -12,20 +13,26 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 export class PrintingEditionService {
   token: string;
-    constructor(private http: HttpClient, private authService: AuthenticationService) { }
+  constructor(private http: HttpClient, private authService: AuthenticationService) { }
   public getAll(page: number): Observable<PrintingEditionModel[]> {
     const httpOptions = this.authService.getHttpOptionsWithAccessToken();
-    return this.http.post<PrintingEditionModel[]>(`http://localhost:52192/api/printingedition/getall`, page,  httpOptions);
-    
-  }
-  public addPrintingEdition(printingEdition: PrintingEditionModel) {
-    const httpOptions = this.authService.getHttpOptionsWithAccessToken();
-    this.http.post<PrintingEditionModel>(`http://localhost:52192/api/printingedition/post`, printingEdition,
-    httpOptions).subscribe();
-    }
-    public deletePrintingEdition(id: number){
-      const httpOptions = this.authService.getHttpOptionsWithAccessToken();
-this.http.post<any>(`http://localhost:52192/api/printingedition/delete`, id, httpOptions).subscribe();
+    return this.http.post<PrintingEditionModel[]>(`${environment.apiUrl}printingedition/getall`, page, httpOptions);
 
-    }
+  }
+  public async addPrintingEdition(printingEdition: PrintingEditionModel): Promise<PrintingEditionModel> {
+    const httpOptions = this.authService.getHttpOptionsWithAccessToken();
+    return await this.http.post<PrintingEditionModel>(`${environment.apiUrl}printingedition/post`
+    , printingEdition, httpOptions).toPromise();
+  }
+  public async deletePrintingEdition(id: number) {
+    const httpOptions = this.authService.getHttpOptionsWithAccessToken();
+    return await this.http.post<any>(`${environment.apiUrl}printingedition/delete`, id, httpOptions).toPromise();
+
+  }
+
+  public async getAllFiltred(filterModel: FilterModel): Promise<PrintingEditionModel> {
+    return await this.http.post<any>(`${environment.apiUrl}printingedition/GetAllFiltred`, filterModel
+    , this.authService.getHttpOptionsWithAccessToken()).toPromise();
+        
+  }
 }

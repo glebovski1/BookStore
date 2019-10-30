@@ -12,6 +12,8 @@ import { PrintingEditionComponent } from './printing-edition';
 import { AppRoutingModule } from './app.routing';
 import { AuthTest } from './Test';
 import { AuthenticationService, RegistrationService, PrintingEditionService } from './service';
+import { PurchaseCardModel, PurchaseModel } from 'src/app/models';
+import { PurchaseCardComponent } from 'src/app/purchase-card';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { AuthenticationService, RegistrationService, PrintingEditionService } fr
     LoginComponent,
     RegisterComponent,
     PrintingEditionComponent,
+    PurchaseCardComponent,
     AuthTest,
   ],
   imports: [
@@ -31,7 +34,7 @@ import { AuthenticationService, RegistrationService, PrintingEditionService } fr
     ReactiveFormsModule,
     NgbModule,
   ],
-  providers: [AuthenticationService, RegistrationService, PrintingEditionService],
+  providers: [AuthenticationService, RegistrationService, PrintingEditionService, PurchaseCardModel, PurchaseModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
