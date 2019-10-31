@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TokenResponseModel, RefreshTokenModel } from '../models';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
+import { TokenResponseModel, RefreshTokenModel } from 'app/models';
 
 
 @Injectable({ providedIn: 'root' })

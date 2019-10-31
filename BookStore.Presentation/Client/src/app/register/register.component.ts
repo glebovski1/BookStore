@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, NgForm, FormControl, FormControlDirective } from '@angular/forms';
 
-import { RegistrationService } from '../service';
-import { RegistrationModel } from '../models';
+import { RegistrationService } from 'app/Service';
+import { RegistrationModel } from 'app/models';
 
 @Component({ templateUrl: 'register.component.html' })
 export class RegisterComponent implements OnInit {

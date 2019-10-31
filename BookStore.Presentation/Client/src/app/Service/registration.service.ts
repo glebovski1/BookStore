@@ -1,8 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TokenResponseModel, RegistrationModel } from '../models';
+import { TokenResponseModel, RegistrationModel } from 'app/models';
 import { resolve } from 'url';
-import { environment } from 'src/environments/environment';
+import { environment } from 'environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class RegistrationService {

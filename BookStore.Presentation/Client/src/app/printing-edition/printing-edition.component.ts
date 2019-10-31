@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PrintingEditionService, AuthenticationService, PurchaseService } from '../service';
-import { PrintingEditionModel, AuthorModel, FilterModel, PurchaseModel, PurchaseCardModel } from '../models';
+import { PrintingEditionService, AuthenticationService, PurchaseService } from 'app/Service';
+import { PrintingEditionModel, AuthorModel, FilterModel, PurchaseModel, PurchaseCardModel } from 'app/models';
 import { error } from 'util';
 import { getLocaleNumberFormat } from '@angular/common';
 import { Observable, Subscriber } from 'rxjs';
@@ -68,7 +68,7 @@ export class PrintingEditionComponent implements OnInit {
   onAddToCard() {
     this.purchaseCard = this.purchaseService.GetPurchaseCardFromLocalStorage();
     // tslint:disable-next-line: triple-equals
-    if (this.purchaseCard == undefined) {
+    if (!this.purchaseCard) {
       this.purchaseCard = new PurchaseCardModel();
     }
     this.purchase = new PurchaseModel();
@@ -86,11 +86,11 @@ export class PrintingEditionComponent implements OnInit {
   }
 
   onPreviousPage() {
-    this.pageNumber = this.pageNumber - 1;
+    this.pageNumber--;
     this.getAll();
   }
   onNextPage() {
-    this.pageNumber = this.pageNumber + 1;
+    this.pageNumber++;
     this.getAll();
   }
   onPageNumber(page: number) {

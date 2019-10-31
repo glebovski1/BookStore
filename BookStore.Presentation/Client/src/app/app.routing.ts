@@ -6,7 +6,7 @@ import { RegisterComponent } from './register';
 import { PrintingEditionComponent} from './printing-edition';
 import { from } from 'rxjs';
 import { AuthTest } from './Test';
-import { PurchaseCardComponent } from 'src/app/purchase-card';
+import { PurchaseCardComponent } from 'app/purchase-card';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },

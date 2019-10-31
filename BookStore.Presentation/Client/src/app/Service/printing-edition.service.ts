@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PrintingEditionModel, FilterModel } from '../models';
 import { Observable } from 'rxjs';
 import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { AuthenticationService } from 'src/app/service/authentication.service';
-import { environment } from 'src/environments/environment';
+import { AuthenticationService } from 'app/Service/authentication.service';
+import { environment } from 'environments/environment';
+import { PrintingEditionModel, FilterModel } from 'app/models';
 
 
 

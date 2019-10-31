@@ -1,5 +1,6 @@
-import { PurchaseModel } from 'src/app/models/purchaseModel';
+
 import { DecimalPipe } from '@angular/common';
+import { PurchaseModel } from 'app/models/purchaseModel';
 
 export class PurchaseCardModel {
     public PurchaseModels: Array<PurchaseModel>;
