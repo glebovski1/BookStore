@@ -22,6 +22,10 @@ namespace BookStore.BusinessLogic.Models
             this.Payment = order.Payment;
 
         }
+        public OrderModel()
+        {
+
+        }
         public string Decsription { get; set; }
 
         public int UserId { get; set; }
@@ -34,7 +38,22 @@ namespace BookStore.BusinessLogic.Models
 
         public Payment Payment { get; set; }
 
-        public List<OrderItems> OrderItems { get; set; }
+        public List<OrderItemsModel> OrderItemsModel { get; set; }
+
+        public Order OrderMapToEntity()
+        {
+            Order order = new Order();
+            order.Decsription = this.Decsription;
+            order.UserId = this.UserId;
+            if (!(this.User == null))
+            {
+                order.User = this.User.MapToUserEntity();
+            }   
+            order.DateTimeUtcNow = this.Date;
+            order.PaymentId = this.PaymentId;
+            order.Payment = this.Payment;
+            return order;
+        }
 
     }
 }

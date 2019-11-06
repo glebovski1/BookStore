@@ -12,10 +12,15 @@ namespace BookStore.DataAccess.Entities
 
         [ForeignKey("PrintingEdition")]
         public int PrintingEditionId { get; set; }
-                
+
         public PrintingEdition PrintingEdition { get; set; }
 
         public int Count { get; set; }
+
+        [ForeignKey("Order")]
+        public int OrderId { get; set; }
+
+        public Order Order { get; set; }
 
     }
 }

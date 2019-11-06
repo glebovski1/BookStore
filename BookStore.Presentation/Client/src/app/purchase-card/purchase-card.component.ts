@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PurchaseCardModel, PurchaseModel } from 'app/models';
-import { PurchaseService } from 'app/Service';
+import { PurchaseService, OrderService } from 'app/Service';
 import { Subscriber } from 'rxjs';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { Subscriber } from 'rxjs';
 })
 export class PurchaseCardComponent implements OnInit {
     currentPurchaseCard: PurchaseCardModel;
-    constructor(private purchaseService: PurchaseService) { }
+    router: Router;
+    constructor(private purchaseService: PurchaseService,
+                private orderService: OrderService) { }
     ngOnInit() {
         this.currentPurchaseCard = this.purchaseService.GetPurchaseCardFromLocalStorage();
     }
@@ -30,6 +33,6 @@ export class PurchaseCardComponent implements OnInit {
     }
 
     onBuy() {
-
+         this.orderService.AddToOrder();
     }
 }

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 using System;
 
 
@@ -91,6 +92,8 @@ namespace BookStore.Presentation
 
             services.AddCors();
 
+            
+
         }
 
 
@@ -113,12 +116,12 @@ namespace BookStore.Presentation
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseAuthentication();
-            MyIdentityDataInitializer.SeedRoles(roleManager);
-            MyIdentityDataInitializer.SeedUsers(userManager);
+            MyIdentityDataInitializer.SeedRoles(roleManager).Wait();
+            MyIdentityDataInitializer.SeedUsers(userManager).Wait();
             app.UseStaticFiles();
             //app.Run(async (context) => { await context.Response.WriteAsync("hello world"); });
             //app.UseMvc();
-            
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

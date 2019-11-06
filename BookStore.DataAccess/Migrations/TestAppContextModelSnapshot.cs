@@ -100,7 +100,7 @@ namespace BookStore.DataAccess.Migrations
 
                     b.Property<bool>("IsRemoved");
 
-                    b.Property<int?>("OrderId");
+                    b.Property<int>("OrderId");
 
                     b.Property<int>("PrintingEditionId");
 
@@ -215,30 +215,6 @@ namespace BookStore.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("BookStore.DataAccess.Entities.UserInRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateTimeUtcNow");
-
-                    b.Property<bool>("IsRemoved");
-
-                    b.Property<int>("RoleId");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("UserInRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -393,26 +369,14 @@ namespace BookStore.DataAccess.Migrations
 
             modelBuilder.Entity("BookStore.DataAccess.Entities.OrderItems", b =>
                 {
-                    b.HasOne("BookStore.DataAccess.Entities.Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId");
+                    b.HasOne("BookStore.DataAccess.Entities.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BookStore.DataAccess.Entities.PrintingEdition", "PrintingEdition")
                         .WithMany()
                         .HasForeignKey("PrintingEditionId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookStore.DataAccess.Entities.UserInRole", b =>
-                {
-                    b.HasOne("BookStore.DataAccess.Entities.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookStore.DataAccess.Entities.User", "User")
-                        .WithOne("UserInRole")
-                        .HasForeignKey("BookStore.DataAccess.Entities.UserInRole", "UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

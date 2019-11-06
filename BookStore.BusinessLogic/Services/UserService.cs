@@ -66,7 +66,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task ConfirmEmail(UserModel userModel, string confirmToken)
         {
-            User user =await _userManager.FindByEmailAsync(userModel.Email);
+            User user = await _userManager.FindByEmailAsync(userModel.Email);
 
             await _userManager.ConfirmEmailAsync(userModel.MapToUserEntity(), confirmToken);
         }
@@ -98,7 +98,7 @@ namespace BookStore.BusinessLogic.Services
 
         public async Task<string> GetIdByEmail(string email)
         {
-            var userEntity =await _userManager.FindByEmailAsync(email);
+            var userEntity = await _userManager.FindByEmailAsync(email);
             return userEntity.Id.ToString();
         }
         public async Task<UserModel> GetUserModelById(int id)

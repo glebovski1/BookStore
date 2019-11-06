@@ -12,7 +12,7 @@ namespace BookStore.Presentation.Controllers
     [ApiController]
     public class PrintingEditionController : ControllerBase
     {
-        public PrintingEditionController(PrintingEditionService printingEditionService)
+        public PrintingEditionController(IPrintingEditionService printingEditionService)
         {
             _printingEditionService = printingEditionService;
         }

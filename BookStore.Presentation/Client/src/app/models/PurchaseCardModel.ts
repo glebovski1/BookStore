@@ -7,4 +7,7 @@ export class PurchaseCardModel {
     public Amount: number;
     public TotalCost: DecimalPipe;
     constructor() {}
+    public GetPurchaseModelById(id: number) {
+        return this.PurchaseModels.filter(purchase => purchase.id === id);
+    }
 }

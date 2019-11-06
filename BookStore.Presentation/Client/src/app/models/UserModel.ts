@@ -1,7 +1,7 @@
-export class RegistrationModel {
-    public UserName: string;
-    public FirstName: string;
-    public LastName: string;
-    public Email: string;
-    public Password: string;
+export class UserModel {
+    public id: number;
+    public firstname: string;
+    public lastname: string;
+    public username: string;
+    public email: string;
 }

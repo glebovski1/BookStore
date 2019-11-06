@@ -138,6 +138,7 @@ namespace BookStore.Presentation.Controllers
                 tokensResponseModel.AccessToken = jwtToken;
                 tokensResponseModel.RefreshToken = refreshJwtToken;
                 tokensResponseModel.Role = role;
+                tokensResponseModel.Id = user.Id;
                 await _userManager.SetAuthenticationTokenAsync(user, String.Empty, "RefreshToken", refreshJwtToken);
                 return tokensResponseModel;
                     

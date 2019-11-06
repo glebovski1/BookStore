@@ -11,5 +11,7 @@ namespace BookStore.BusinessLogic.Models
         public string RefreshToken { get; set; }
 
         public string Role { get; set; }
+
+        public int Id { get; set; }
     }
 }

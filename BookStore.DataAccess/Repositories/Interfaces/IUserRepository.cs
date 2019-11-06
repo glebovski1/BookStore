@@ -5,6 +5,6 @@ namespace BookStore.DataAccess.Repositories.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-       Task<User> GetUserWithRole(int id);
+       
     }
 }

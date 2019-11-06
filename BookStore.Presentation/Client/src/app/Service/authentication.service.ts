@@ -17,8 +17,9 @@ export class AuthenticationService {
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('refreshToken', data.refreshToken);
           localStorage.setItem('email', email);
+          localStorage.setItem('id', data.id.toString());
          },
-        (error) => {
+        (error) => { 
           this.error = error.Massage; } );
     }
     logOut() {
@@ -45,17 +46,20 @@ export class AuthenticationService {
     getRole(): string {
       return localStorage.getItem('role');
     }
+    getId(): number {
+      return Number(localStorage.getItem('id'));
+    }
     refreshToken() {
       this.refreshRequest = new RefreshTokenModel();
       this.refreshRequest.LoginProvider = '';
       this.refreshRequest.RefreshTokenFromClient = this.getRefrershToken();
       this.refreshRequest.email = localStorage.getItem('email');
       this.http.post<TokenResponseModel>(`${environment.apiUrl}account/jwtrefresh`, this.refreshRequest).subscribe(
-        (data: TokenResponseModel) =>{
+        (data: TokenResponseModel) => {
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('refreshToken', data.refreshToken);
         },
-        (error) => {this.error = error.Massage;}
+        (error) => {this.error = error.Massage; }
       );
     }
 }

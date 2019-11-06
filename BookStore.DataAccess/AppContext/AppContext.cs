@@ -29,8 +29,7 @@ namespace BookStore.DataAccess.AppContext
 
         public DbSet<PrintingEdition> PrintingEditions { get; set; }
 
-        public DbSet<UserInRole> UserInRoles { get; set; }
-
+        public DbSet<Role> Role { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

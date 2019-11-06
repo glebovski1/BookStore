@@ -19,7 +19,7 @@ namespace BookStore.DataAccess.Entities
 
         public Payment Payment { get; set; }
 
-        public List<OrderItems> OrderItems { get; set; }
+        
 
     }
 }

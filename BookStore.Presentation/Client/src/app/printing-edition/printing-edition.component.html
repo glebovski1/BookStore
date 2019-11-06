@@ -52,7 +52,13 @@
         <li class="text-body">currency: {{selectedModel.currency}}</li>
         <li class="text-body">type: {{selectedModel.type}}</li>
         <li class="text-body" *ngFor="let author of selectedModel.authors">authors: {{author.name}}</li>
-        <button type="button" class="btn" (click)="onAddToCard(model)" >Add to card</button>
+        <form [formGroup]="amountInpute" (ngSubmit)="onAddToCard()">
+          <div class="form-inline">
+            <label type="text-body" for="amount">Amount</label>
+            <input type="number" class="form-control" formControlName="amount" id="amount">
+            <button type="button" class="btn" (click)="onAddToCard(model)">Add to card</button>
+          </div>
+        </form>
       </div>
       <div *ngIf="sekcondComumnType === 'AddPrintingEdition'">
         <h2 class="text-body font-weight-bolder text-center">Add new printing edition</h2>
@@ -95,11 +101,11 @@
           </div>
           <div class="form-group">
             <label class="text-body" for="uperPrice">UperPricr:</label>
-            <input type="number" class="form-control" formControlName="uperPrice" id="uperPrice"  >
+            <input type="number" class="form-control" formControlName="uperPrice" id="uperPrice">
           </div>
           <div class="form-group">
             <label class="text-body" for="lowerPrice">LowerPrice:</label>
-            <input type="number" class="form-control" formControlName="lowerPrice" id="lowerPrice"  >
+            <input type="number" class="form-control" formControlName="lowerPrice" id="lowerPrice">
           </div>
           <div class="form-group">
             <label class="text-body" for="type">Type:</label>
@@ -110,8 +116,8 @@
             <input class="text" class="form-control" formControlName="author" id="author">
           </div>
           <div class="form-group">
-              <button class="btn btn-dark">Find</button>
-            </div>
+            <button class="btn btn-dark">Find</button>
+          </div>
         </form>
       </div>
       <h2>{{errorText}}</h2>

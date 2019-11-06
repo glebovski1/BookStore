@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { AuthTest } from './Test';
-import { AuthenticationService, RegistrationService, PrintingEditionService } from 'app/Service';
+import { AuthenticationService, RegistrationService, PrintingEditionService, OrderService } from 'app/Service';
 
 
 import { PurchaseCardComponent } from 'app/purchase-card';
@@ -17,6 +17,7 @@ import { HomeComponent } from 'app/home';
 import { LoginComponent } from 'app/login';
 import { RegisterComponent } from 'app/register';
 import { PrintingEditionComponent } from 'app/printing-edition';
+import { StripeComponent} from 'app/stripe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { PrintingEditionComponent } from 'app/printing-edition';
     PrintingEditionComponent,
     PurchaseCardComponent,
     AuthTest,
+    StripeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { PrintingEditionComponent } from 'app/printing-edition';
     ReactiveFormsModule,
     NgbModule,
   ],
-  providers: [AuthenticationService, RegistrationService, PrintingEditionService, PurchaseCardModel, PurchaseModel],
+  providers: [AuthenticationService, RegistrationService, PrintingEditionService, PurchaseCardModel, PurchaseModel, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

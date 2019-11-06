@@ -15,11 +15,7 @@ namespace BookStore.DataAccess.Repositories
             
         }
        
-        public async Task<User> GetUserWithRole(int id)
-        {
-            return await _dbSet.Include(user=>user.UserInRole).FirstOrDefaultAsync(user => user.Id == id);
-
-        }
+       
 
     }
 }

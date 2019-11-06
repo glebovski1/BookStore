@@ -14,17 +14,20 @@ namespace BookStore.BusinessLogic
         {
             
                        
-            services.AddTransient<UserService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<MailService>();
             services.AddTransient<IAuthorService, AuthorService>();
-            services.AddTransient<PrintingEditionService>();
+            services.AddTransient< IPrintingEditionService, PrintingEditionService >();
+            services.AddTransient<IOrderService, OrderService>();
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPrintingEditionRepository, PrintingEditionRepository>();
             services.AddTransient<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderItemsRepository, OrderItemsRepository>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAuthorInBooksRepository, AuthorInBookRepository>();
+           
         }
 
     }
