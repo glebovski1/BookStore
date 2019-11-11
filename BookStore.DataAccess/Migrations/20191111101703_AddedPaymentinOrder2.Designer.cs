@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.DataAccess.Migrations
 {
     [DbContext(typeof(TestAppContext))]
-    [Migration("20191106121901_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20191111101703_AddedPaymentinOrder2")]
+    partial class AddedPaymentinOrder2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,8 +79,6 @@ namespace BookStore.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Orders");
@@ -110,8 +108,6 @@ namespace BookStore.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("PrintingEditionId");
-
                     b.ToTable("OrderItems");
                 });
 
@@ -125,9 +121,14 @@ namespace BookStore.DataAccess.Migrations
 
                     b.Property<bool>("IsRemoved");
 
-                    b.Property<int>("TransactionId");
+                    b.Property<int>("OrderId");
+
+                    b.Property<string>("TransactionId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique();
 
                     b.ToTable("Payments");
                 });
@@ -358,11 +359,6 @@ namespace BookStore.DataAccess.Migrations
 
             modelBuilder.Entity("BookStore.DataAccess.Entities.Order", b =>
                 {
-                    b.HasOne("BookStore.DataAccess.Entities.Payment", "Payment")
-                        .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BookStore.DataAccess.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -375,10 +371,13 @@ namespace BookStore.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("BookStore.DataAccess.Entities.PrintingEdition", "PrintingEdition")
-                        .WithMany()
-                        .HasForeignKey("PrintingEditionId")
+            modelBuilder.Entity("BookStore.DataAccess.Entities.Payment", b =>
+                {
+                    b.HasOne("BookStore.DataAccess.Entities.Order", "Order")
+                        .WithOne("Payment")
+                        .HasForeignKey("BookStore.DataAccess.Entities.Payment", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

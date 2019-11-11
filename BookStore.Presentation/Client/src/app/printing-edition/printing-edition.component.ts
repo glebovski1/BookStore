@@ -73,6 +73,7 @@ export class PrintingEditionComponent implements OnInit {
     this.purchaseCard = this.purchaseService.GetPurchaseCardFromLocalStorage();
     if (!this.purchaseCard) {
       this.purchaseCard = new PurchaseCardModel();
+      this.purchaseCard.PurchaseModels = new Array<PurchaseModel>();
     }
     this.purchase = new PurchaseModel();
     this.purchase.id = this.selectedModel.id;

@@ -121,6 +121,7 @@ namespace BookStore.Presentation
             app.UseStaticFiles();
             //app.Run(async (context) => { await context.Response.WriteAsync("hello world"); });
             //app.UseMvc();
+           
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
             app.UseMvc(routes =>
             {

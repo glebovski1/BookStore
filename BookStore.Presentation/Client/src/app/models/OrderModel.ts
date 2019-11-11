@@ -11,5 +11,6 @@ export class OrderModel {
     public usermodel: UserModel;
     public date: DatePipe;
     public payment: PaymentModel;
+    public stripeToken: string;
     constructor() {}
 }

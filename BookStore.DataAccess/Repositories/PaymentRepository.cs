@@ -4,6 +4,7 @@ using BookStore.DataAccess.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BookStore.DataAccess.Repositories
 {
@@ -12,6 +13,12 @@ namespace BookStore.DataAccess.Repositories
         public PaymentRepository(TestAppContext dataBase) : base(dataBase)
         {
 
+        }
+        public async Task<int> GetIdAfterCreate(Payment payment)
+        {
+            await base.Create(payment);
+            _dataBase.Entry(payment).GetDatabaseValues();
+            return payment.Id;
         }
 
     }

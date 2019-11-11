@@ -12,8 +12,6 @@ namespace BookStore.DataAccess.AppContext
 
         public TestAppContext(DbContextOptions<TestAppContext> options) : base(options)
         {
-
-            Database.EnsureCreated();
         }
 
 

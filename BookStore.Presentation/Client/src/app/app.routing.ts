@@ -7,7 +7,7 @@ import { PrintingEditionComponent} from './printing-edition';
 import { from } from 'rxjs';
 import { AuthTest } from './Test';
 import { PurchaseCardComponent } from 'app/purchase-card';
-import { StripeComponent } from 'app/stripe';
+
 
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'printingEdition', component: PrintingEditionComponent},
     { path: 'test', component: AuthTest},
     { path: 'purchas', component: PurchaseCardComponent},
-    { path: 'stripe', component: StripeComponent},
+  
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

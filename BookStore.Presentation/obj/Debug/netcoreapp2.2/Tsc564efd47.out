@@ -68,10 +68,6 @@ C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\o
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\purchase-card\purchase-card.component.js.map
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\purchase-card\index.js
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\purchase-card\index.js.map
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\stripe\stripe.component.js
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\stripe\stripe.component.js.map
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\stripe\index.js
-C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\stripe\index.js.map
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\app.routing.js
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\app.routing.js.map
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\app.component.js
@@ -84,5 +80,7 @@ C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\o
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\test.js.map
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\email-confirmation\email-confirmation.js
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\email-confirmation\email-confirmation.js.map
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\models\PaymentDataModel.js
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\app\models\PaymentDataModel.js.map
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\environments\environment.prod.js
 C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.Presentation\Client\dist\out-tsc\environments\environment.prod.js.map

@@ -5,6 +5,6 @@ namespace BookStore.DataAccess.Repositories.Interfaces
 {
     public interface IPrintingEditionRepository : IBaseRepository<Entities.PrintingEdition>
     {
-       
+        Task<int> GetPriceInCentes(int id);
     }
 }

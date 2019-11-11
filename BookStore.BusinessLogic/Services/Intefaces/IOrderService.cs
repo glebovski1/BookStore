@@ -12,6 +12,7 @@ namespace BookStore.BusinessLogic.Services.Intefaces
 
         Task AddOrder(OrderModel orderModel);
 
+        Task<int> GetOrderTotalCoastInCents(OrderModel orderModel);
 
         Task<List<OrderModel>> GetAllOrders();
     }

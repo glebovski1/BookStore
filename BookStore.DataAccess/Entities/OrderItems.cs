@@ -10,7 +10,6 @@ namespace BookStore.DataAccess.Entities
 
         public string Currency { get; set; }
 
-        [ForeignKey("PrintingEdition")]
         public int PrintingEditionId { get; set; }
 
         public PrintingEdition PrintingEdition { get; set; }

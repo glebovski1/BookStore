@@ -8,18 +8,16 @@ namespace BookStore.DataAccess.Entities
 {
     public class Order : BaseEntity
     {
-        public  string Decsription { get; set; }
+        public string Decsription { get; set; }
 
+        [ForeignKey("User")]
         public int UserId { get; set; }
 
         public User User { get; set; }
-               
-        [ForeignKey("Payment")]
-        public int PaymentId { get; set; }
-
-        public Payment Payment { get; set; }
 
         
+
+
 
     }
 }

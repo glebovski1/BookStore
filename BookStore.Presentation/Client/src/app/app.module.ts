@@ -17,7 +17,7 @@ import { HomeComponent } from 'app/home';
 import { LoginComponent } from 'app/login';
 import { RegisterComponent } from 'app/register';
 import { PrintingEditionComponent } from 'app/printing-edition';
-import { StripeComponent} from 'app/stripe';
+
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { StripeComponent} from 'app/stripe';
     PrintingEditionComponent,
     PurchaseCardComponent,
     AuthTest,
-    StripeComponent
+    
   ],
   imports: [
     BrowserModule,

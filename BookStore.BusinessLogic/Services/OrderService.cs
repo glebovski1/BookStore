@@ -14,35 +14,54 @@ namespace BookStore.BusinessLogic.Services
         public IOrderRepository _orderRespository;
         public IOrderItemsRepository _orderItemsRepository;
         public IPrintingEditionRepository _printingEditionRepository;
+        public IPaymentRepository _paymentRepository;
 
         public OrderService(IOrderRepository orderRepository,
                        IOrderItemsRepository orderItemsRepository,
-                       IPrintingEditionRepository printingEditionRepository)
+                       IPrintingEditionRepository printingEditionRepository,
+                       IPaymentRepository paymentRepository)
         {
             _orderRespository = orderRepository;
             _orderItemsRepository = orderItemsRepository;
             _printingEditionRepository = printingEditionRepository;
-
-
+            _paymentRepository = paymentRepository;
         }
 
         public async Task AddOrder(OrderModel orderModel)
         {
             Order order = orderModel.OrderMapToEntity();
-            //order.Payment = new Payment();
-            //order.User = new User();
-            await _orderRespository.Create(order);
-            foreach(OrderItemsModel orderItem in orderModel.OrderItemsModel)
+            order.UserId = orderModel.UserId;
+            var orderId = await _orderRespository.GetIdAfterCreate(order);
+            foreach (OrderItemsModel orderItem in orderModel.OrderItemsModel)
             {
                 PrintingEdition printingEdition = await _printingEditionRepository.Read(orderItem.PrintingEditionId);
-                await _orderItemsRepository.Create(new OrderItems { Amount = orderItem.Amount,
+                await _orderItemsRepository.Create(new OrderItems
+                {
+                    Amount = orderItem.Amount,
                     Count = orderItem.Count,
                     Currency = orderItem.Currency,
-                    PrintingEdition = printingEdition,
-                    Order = orderModel.OrderMapToEntity() });
+                    OrderId = orderId,
+                    PrintingEditionId = orderItem.PrintingEditionId
+
+                });
+                    
             }
+            Payment payment = new Payment();
+            payment.TransactionId = orderModel.StripeToken;
+            payment.OrderId = orderId;
+            await _paymentRepository.GetIdAfterCreate(payment);
+
         }
 
+        public async Task<int> GetOrderTotalCoastInCents(OrderModel orderModel)
+        {
+            int totalPrice=0;
+            foreach (OrderItemsModel orderItems in orderModel.OrderItemsModel)
+            {
+                totalPrice += await _printingEditionRepository.GetPriceInCentes(orderItems.PrintingEditionId) * orderItems.Amount;
+            }
+            return totalPrice;
+        }
         public async Task<List<OrderModel>> GetAllOrders()
         {
             List<OrderModel> OrdersModel = new List<OrderModel>();

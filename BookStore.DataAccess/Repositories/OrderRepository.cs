@@ -13,10 +13,18 @@ namespace BookStore.DataAccess.Repositories
 
         }
 
-        
+       public async Task<int> GetIdAfterCreate(Order order)
+        {
+            await base.Create(order);
+            _dataBase.Entry(order).GetDatabaseValues();
+            return order.Id;
+        }
+            
+    }
+}
         //public async Task<Order> GetOrderWithOrderItems(int id)
         //{
         //    return await _dbSet.Include(order => order.OrderItems).FirstOrDefaultAsync(order => order.Id == id);
         //}
-    }
-}
+    
+

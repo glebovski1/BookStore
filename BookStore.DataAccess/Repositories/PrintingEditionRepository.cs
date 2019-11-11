@@ -16,6 +16,11 @@ namespace BookStore.DataAccess.Repositories
         {
 
         }
+        public async Task<int> GetPriceInCentes(int id)
+        {
+            var printingEdition = await _dataBase.Set<PrintingEdition>().FindAsync(id);
+            return Convert.ToInt32(printingEdition.Price * 100);
+        }
       
     }
 }
