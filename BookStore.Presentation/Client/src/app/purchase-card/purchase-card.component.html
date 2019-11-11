@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h1 class="text-center">Youre Purchase Card</h1>
+    <div class="card-columns">
+        <div class="clickable-row" *ngFor="let purchase of currentPurchaseCard.PurchaseModels; index as i">
+            <div class="card">
+                <div class="card-body bg-danger text-white">
+                    <div>{{purchase.name}}</div>
+                    <div>Price:{{purchase.price}}</div>
+                    <div>Currency:{{purchase.currency}}</div>
+                    <div>Amount:{{purchase.amount}}</div>
+                    <div class="card-footer" class="btn btn-center btn-primary" (click)="onRemove(purchase)">Remove from
+                        Purchase Card</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn-primary btn-center btn-lg" (click)="onRemoveAll()">Remove All</button>
+        <button class="btn-primary btn-lg" (click)="onBuy()">Buy</button>
+    </div>
+</div>

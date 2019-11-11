@@ -1,0 +1,11 @@
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\bin\Debug\netcoreapp2.2\BookStore.DataAccess.deps.json
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\bin\Debug\netcoreapp2.2\BookStore.DataAccess.runtimeconfig.json
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\bin\Debug\netcoreapp2.2\BookStore.DataAccess.runtimeconfig.dev.json
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\bin\Debug\netcoreapp2.2\BookStore.DataAccess.dll
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\bin\Debug\netcoreapp2.2\BookStore.DataAccess.pdb
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.AssemblyInfo.cs
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.dll
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.pdb
+C:\Users\Anuitex\Documents\GitHub\BookStore\BookStore.DataAccess\obj\Debug\netcoreapp2.2\BookStore.DataAccess.csprojAssemblyReference.cache

@@ -1,0 +1,126 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" style="background-color:rgb(255, 255, 255);">
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="clickable-row" *ngFor="let model of models; index as i">
+            <td class="text-white" scope="row">{{ i + 1 }}</td>
+            <td class="text-white">{{model.name}}</td>
+            <td type="button" class="btn btn-dark" (click)="onSelect(model)">Details</td>
+            <td *ngIf="isAdminCondition" type="button" class="btn btn-dark" (click)="onDelete(model)">Deleat</td>
+            <td *ngIf="isAdminCondition" type="button" class="btn btn-dark">Udpate</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <li class="page-item text-white"><a class="btn btn-dark" (click)="onPreviousPage()">Previous</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(1)">1</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark" (click)="onPageNumber(pageNumber)">{{pageNumber}}</a>
+        </li>
+        <li class="page-item text-white"><a class="btn btn-dark"
+            (click)="onPageNumber(pageNumber+1)">{{pageNumber+1}}</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark"
+            (click)="onPageNumber(pageNumber+2)">{{pageNumber+2}}</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark"
+            (click)="onPageNumber(pageNumber+3)">{{pageNumber+3}}</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark"
+            (click)="onPageNumber(pageNumber+4)">{{pageNumber+4}}</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark"
+            (click)="onPageNumber(pageNumber+5)">{{pageNumber+5}}</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark" (click)="onNextPage()">Next</a></li>
+        <li class="page-item text-white"><a class="btn btn-dark" (click)="onFilter()">Filter</a></li>
+      </ul>
+      <div *ngIf="isAdminCondition" type="button" class="btn btn-dark btn-block" (click)="onAddPrintingEdition()">Add
+        new Printing Edition</div>
+      <div *ngIf="isAdminCondition" type="button" class="btn btn-dark btn-block" (click)="onRefresh()">Refresh</div>
+    </div>
+    <div class="col-sm-6" style="background-color:rgb(114, 20, 20);">
+      <div *ngIf="sekcondComumnType === 'DetailsPrintingEdition'">
+        <div class="h2">
+          <h2 class="text-body font-weight-bolder text-center">{{selectedModel.name | uppercase}}</h2>
+        </div>
+        <li class="text-body">name: {{selectedModel.name}}</li>
+        <li class="text-body">description: {{selectedModel.description}}</li>
+        <li class="text-body">price: {{selectedModel.price}}</li>
+        <li class="text-body">status: {{selectedModel.status}}</li>
+        <li class="text-body">currency: {{selectedModel.currency}}</li>
+        <li class="text-body">type: {{selectedModel.type}}</li>
+        <li class="text-body" *ngFor="let author of selectedModel.authors">authors: {{author.name}}</li>
+        <form [formGroup]="amountInpute" (ngSubmit)="onAddToCard()">
+          <div class="form-inline">
+            <label type="text-body" for="amount">Amount</label>
+            <input type="number" class="form-control" formControlName="amount" id="amount">
+            <button type="button" class="btn" (click)="onAddToCard(model)">Add to card</button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="sekcondComumnType === 'AddPrintingEdition'">
+        <h2 class="text-body font-weight-bolder text-center">Add new printing edition</h2>
+        <form [formGroup]="AddNewPrintingEditionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="text-body" for="name">Name:</label>
+            <input type="text" class="form-control" formControlName="name" id="name">
+          </div>
+          <div>
+            <label class="text-body" for="description">Description:</label>
+            <input type="text" class="form-control" formControlName="description" id="description">
+          </div>
+          <div class="form-group">
+            <label class="decimal-body" for="price">Price:</label>
+            <input type="number" class="form-control" formControlName="price" id="price">
+          </div>
+          <div class="form-group">
+            <label class="text-body" for="currency">Currency:</label>
+            <input type="currency" class="form-control" formControlName="currency" id="currency">
+          </div>
+          <div class="form-group">
+            <label class="text-body" type="type">Type:</label>
+            <input type="text" class="form-control" formControlName="type" id="type">
+          </div>
+          <div class="form-group">
+            <label class="text-body" type="authors">Authors::</label>
+            <input type="text" class="form-control" formControlName="authors" id="authors">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-dark">Add</button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="sekcondComumnType === 'filter'">
+        <h2>Search Printing Edition</h2>
+        <form [formGroup]="FilterPrintingEdition" (ngSubmit)="onFilterPrintingEdition()">
+          <div class="form-group">
+            <label class="text-body" for="name">Name:</label>
+            <input type="text" class="form-control" formControlName="name" id="name">
+          </div>
+          <div class="form-group">
+            <label class="text-body" for="uperPrice">UperPricr:</label>
+            <input type="number" class="form-control" formControlName="uperPrice" id="uperPrice">
+          </div>
+          <div class="form-group">
+            <label class="text-body" for="lowerPrice">LowerPrice:</label>
+            <input type="number" class="form-control" formControlName="lowerPrice" id="lowerPrice">
+          </div>
+          <div class="form-group">
+            <label class="text-body" for="type">Type:</label>
+            <input type="text" class="form-control" formControlName="type" id="type">
+          </div>
+          <div class="form-group">
+            <label class="text-body" for="author">Author:</label>
+            <input class="text" class="form-control" formControlName="author" id="author">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-dark">Find</button>
+          </div>
+        </form>
+      </div>
+      <h2>{{errorText}}</h2>
+    </div>
+  </div>
+</div>
